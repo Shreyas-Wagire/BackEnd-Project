@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to Our Platform</h1>
+        <p>Connect, Learn, and Grow with Us!</p>
+    </header>
+    <main>
+        <section class="counter-section">
+            <h2>The total number of users:</h2>
+            <div id="userCount"><%= count %></div>
+        </section>
+        <section class="join-section">
+            <button id="joinButton">Join Us Today!</button>
+        </section>
+    </main>
+   
+    <script>
+        // Animate the user count
+        const userCount = document.getElementById('userCount');
+        let count = 0;
+        const target = parseInt('<%= count %>') || 0;
+        const interval = setInterval(() => {
+            count += Math.ceil(target / 50); // Increment smoothly
+            if (count >= target) {
+                userCount.textContent = target;
+                clearInterval(interval);
+            } else {
+                userCount.textContent = count;
+            }
+        }, 50);
+    </script>
+</body>
+</html>
